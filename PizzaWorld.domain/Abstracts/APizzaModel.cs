@@ -2,13 +2,13 @@ using System.Collections.Generic;
 
 namespace PizzaWorld.Domain.Abstracts
 {
-    public class APizzaModel
+    public class APizzaModel : AEntity
     {
         public string Crust { get; set; }
 
         public string Size { get; set; }
         
-        public List<string> Toppings { get; set; }
+        // public List<Topping> Toppings { get; set; }
 
         protected APizzaModel()
         {

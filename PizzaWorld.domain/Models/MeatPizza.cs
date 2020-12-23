@@ -14,18 +14,18 @@ namespace PizzaWorld.Domain.Models
       {
           Size = "Medium";
       }
-      protected override void AddToppings()
-      {
-          Toppings = new List<string>
-          {
-              "cheese",
-              "pepperoni",
-              "sausage",
-              "sauce",
-              "ham"
-          };
+    //   protected override void AddToppings()
+    //   {
+    //       Toppings = new List<string>
+    //       {
+    //           "cheese",
+    //           "pepperoni",
+    //           "sausage",
+    //           "sauce",
+    //           "ham"
+    //       };
 
-      }
+    //   }
 
     }
 }
