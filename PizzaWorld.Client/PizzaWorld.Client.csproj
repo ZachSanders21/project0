@@ -10,6 +10,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="microsoft.entityframeworkcore.SQLserver" Version="5.0.1" />
   </ItemGroup>
 
   <PropertyGroup>

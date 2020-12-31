@@ -32,13 +32,15 @@ namespace PizzaWorld.Client
 
             PrintAllStores();
 
-            user.SelectedStore =_sql.SelectStore();
-           // user.SelectedStore.PrintPizza();
-            user.SelectedStore.CreateOrder();
-           // user.Orders.Add(user.SelectedStore.Orders.Last());
+            // user.SelectedStore =_sql.SelectStore();
+            // user.SelectedStore.CreateOrder();
+            // user.Orders.Add(user.SelectedStore.Orders.Last());
             // while user.SelectPizza()
-           // user.Orders.Last().MakeMeatPizza();
-            System.Console.WriteLine(user);
+            //user.Orders.Last().MakeMeatPizza();
+
+            //_sql.Update();
+            
+            //System.Console.WriteLine(user);
 
         }
     }

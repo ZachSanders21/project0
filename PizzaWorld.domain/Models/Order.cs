@@ -9,22 +9,25 @@ namespace PizzaWorld.Domain.Models
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
 
         public List<APizzaModel> Pizzas { get; set; }
-
-        public void MakeMeatPizza()
+        public Order()
         {
-            Pizzas.Add(_pizzaFactory.Make<MeatPizza>());
+            Pizzas = new List<APizzaModel>();
         }
-        public void MakeVeggiePizza()
+        public void MakeMeatPizza(string size)
         {
-            Pizzas.Add(_pizzaFactory.Make<VeggiePizza>());
+            Pizzas.Add(_pizzaFactory.Make<MeatPizza>(size));
         }
-        public void MakeHawaianPizza()
+        public void MakeVeggiePizza(string size)
         {
-            Pizzas.Add(_pizzaFactory.Make<HawainPizza>());
+            Pizzas.Add(_pizzaFactory.Make<VeggiePizza>(size));
         }
-        public void MakeSupremePizza()
+        public void MakeHawaianPizza(string size)
         {
-            Pizzas.Add(_pizzaFactory.Make<SupremePizza>());
+            Pizzas.Add(_pizzaFactory.Make<HawaianPizza>(size));
+        }
+        public void MakeSupremePizza(string size)
+        {
+            Pizzas.Add(_pizzaFactory.Make<SupremePizza>(size));
         }
     }
 }

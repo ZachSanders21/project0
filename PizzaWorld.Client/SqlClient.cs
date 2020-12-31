@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Storing;
 
@@ -9,37 +10,43 @@ namespace PizzaWorld.Client
     public class SqlClient
     {
         private readonly PizzaWorldContext _db = new PizzaWorldContext();
-        public List<Store> Stores { get; set; }
-        public SqlClient()
-        {
-            while (ReadStores().Count() < 2)
-            {
-                CreateStore();
-            }
-        }
+
         public IEnumerable<Store> ReadStores()
         {
             return _db.Stores;
         }
-        private void ReadListStores()
+
+        public Store ReadOne(string name)
         {
-            Stores = _db.Stores.ToList<Store>();
+            var s = _db.Stores.FirstOrDefault(s => s.Name == name);
+            return s;
         }
-        public void Save(Store store)
+        public IEnumerable<Order> ReadOrders(Store store)
         {
-            _db.Add(store);
+            var s = ReadOne(store.Name);
+
+            return s.Orders;
+        }
+        public void Update()
+        {
             _db.SaveChanges();
         }
-        public void CreateStore()
-        {
-            Save(new Store());
-        }
+
         public Store SelectStore()
         {
-            int.TryParse(Console.ReadLine(), out int input); // 0 or selection
-
-            return Stores.ElementAtOrDefault(input - 1);
-
+            string input = Console.ReadLine();
+            return ReadOne(input);
+        }
+        public void UserOrderHistroy(User user)
+        {
+            var u = _db.Users
+                       .Include(u => u.Orders)
+                       .ThenInclude(o => o.Pizzas)
+                       .ThenInclude(p => p.Crust)
+                       .FirstOrDefault(u => u.EntityID == user.EntityID);
+            var o = u.Orders.LastOrDefault();
+            var p = o.Pizzas.LastOrDefault().Crust;
+            
         }
     }
 }

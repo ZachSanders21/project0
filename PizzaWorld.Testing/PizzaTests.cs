@@ -9,7 +9,7 @@ namespace PizzaWorld.Testing
         private void Test_PizzaExists()
         {
             // arrange
-            var sut = new MeatPizza(); // inference
+            var sut = new MeatPizza("medium"); // inference
             // Order sut1 = new Order(); // memory allocation
 
             // act

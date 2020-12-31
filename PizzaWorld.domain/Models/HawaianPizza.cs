@@ -3,19 +3,24 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class HawainPizza : APizzaModel
+    public class HawaianPizza : APizzaModel
     {
-        protected override void AddCrust()
+        public HawaianPizza(string size) : base(size)
         {
-            Crust = "Regular";
+            
         }
 
-        protected override void AddSize()
+        protected override void AddCrust()
+        {
+            Crust = "crust";
+        }
+
+        protected override void AddSize(string size)
         {
             Size = "Medium";
         }
-        // protected override void AddToppings()
-        // {
+        protected override void AddToppings()
+        {
         //     Toppings = new List<string>
         //     {
         //         "pineapple",
@@ -23,6 +28,6 @@ namespace PizzaWorld.Domain.Models
         //         "onion"
         //     };
 
-        // }
+        }
     }
 }

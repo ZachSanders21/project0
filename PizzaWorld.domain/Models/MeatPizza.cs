@@ -5,27 +5,31 @@ namespace PizzaWorld.Domain.Models
 {
     public class MeatPizza : APizzaModel
     {
+      public MeatPizza(string size) : base(size)
+        {
+            
+        }
       protected override void AddCrust()
       {
-          Crust = "Regular";
+          Crust = "crust";
       }  
 
-      protected override void AddSize()
+      protected override void AddSize(string Size)
       {
           Size = "Medium";
       }
-    //   protected override void AddToppings()
-    //   {
-    //       Toppings = new List<string>
-    //       {
-    //           "cheese",
-    //           "pepperoni",
-    //           "sausage",
-    //           "sauce",
-    //           "ham"
-    //       };
+      protected override void AddToppings()
+      {
+        //   Toppings = new List<string>
+        //   {
+        //       "cheese",
+        //       "pepperoni",
+        //       "sausage",
+        //       "sauce",
+        //       "ham"
+        //   };
 
-    //   }
+      }
 
     }
 }

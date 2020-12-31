@@ -1,3 +1,4 @@
+using PizzaWorld.Domain.Models;
 using System.Collections.Generic;
 
 namespace PizzaWorld.Domain.Abstracts
@@ -7,18 +8,22 @@ namespace PizzaWorld.Domain.Abstracts
         public string Crust { get; set; }
 
         public string Size { get; set; }
+        public List<Topping> Toppings { get; set; }
         
-        // public List<Topping> Toppings { get; set; }
 
-        protected APizzaModel()
+        protected APizzaModel(string size)
         {
             AddCrust();
-            AddSize();
+            AddSize(size);
             AddToppings();
+        }
+        protected APizzaModel()
+        {
+
         }
 
         protected virtual void AddCrust() {}
-        protected virtual void AddSize() {}
+        protected virtual void AddSize(string size) {}
         protected virtual void AddToppings() {}
 
     }
