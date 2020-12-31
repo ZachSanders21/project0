@@ -17,7 +17,7 @@ namespace PizzaWorld.Domain.Models
 
         protected override void AddSize(string size)
         {
-            Size = "Medium";
+            Size = size;
         }
         protected override void AddToppings()
         {
@@ -28,6 +28,10 @@ namespace PizzaWorld.Domain.Models
         //         "onion"
         //     };
 
+        }
+        protected override string GetPizzaName()
+        {
+            return "Hawaian Pizza";
         }
     }
 }

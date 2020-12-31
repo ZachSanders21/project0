@@ -14,9 +14,9 @@ namespace PizzaWorld.Domain.Models
           Crust = "crust";
       }  
 
-      protected override void AddSize(string Size)
+      protected override void AddSize(string size)
       {
-          Size = "Medium";
+        Size = size;
       }
       protected override void AddToppings()
       {
@@ -30,6 +30,9 @@ namespace PizzaWorld.Domain.Models
         //   };
 
       }
-
+      protected override string GetPizzaName()
+      {
+        return "Meat Pizza";
+      }
     }
 }

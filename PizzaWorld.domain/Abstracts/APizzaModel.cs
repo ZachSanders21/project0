@@ -25,6 +25,15 @@ namespace PizzaWorld.Domain.Abstracts
         protected virtual void AddCrust() {}
         protected virtual void AddSize(string size) {}
         protected virtual void AddToppings() {}
+        protected virtual string GetPizzaName() 
+        {
+            return "Name";
+        }
+        public override string ToString()
+        {
+            return $"{Size} {GetPizzaName()}";
+        }
+
 
     }
 }

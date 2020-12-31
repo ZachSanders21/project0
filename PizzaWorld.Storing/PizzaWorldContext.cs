@@ -9,7 +9,7 @@ namespace PizzaWorld.Storing
     {
         public DbSet<Store> Stores { get; set; }
         public DbSet<User> Users { get; set; }
-        // public DbSet<APizzaModel> Pizzas { get; set; }
+        //public DbSet<APizzaModel> Pizzas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
@@ -31,14 +31,24 @@ namespace PizzaWorld.Storing
         {
             builder.Entity<Store>().HasData(new List<Store>
             {
-                new Store() { EntityID = 10, Name = "Store1"},
-                new Store() { EntityID = 11, Name = "Store2"}
+                new Store() { EntityID = 1, Name = "one"},
+                new Store() { EntityID = 2, Name = "two"}
             }
             );
             builder.Entity<Topping>().HasData(new List<Topping>
             {
-                new Topping() { EntityID = 10, Name = "Pepperoni"},
-                new Topping() { EntityID = 11, Name = "Pineapple"}
+                new Topping() { EntityID = 1,  Name = "Pepperoni",  Price = 2},
+                new Topping() { EntityID = 2,  Name = "Pineapple",  Price = 1},
+                new Topping() { EntityID = 3,  Name = "Cheese",     Price = 3},
+                new Topping() { EntityID = 4,  Name = "Sausage",    Price = 2},
+                new Topping() { EntityID = 5,  Name = "Ham",        Price = 1},
+                new Topping() { EntityID = 6,  Name = "Onion",      Price = 1},
+                new Topping() { EntityID = 7,  Name = "Bacon",      Price = 3},
+                new Topping() { EntityID = 8,  Name = "Chicken",    Price = 3},
+                new Topping() { EntityID = 9,  Name = "Anchovi",    Price = 2},
+                new Topping() { EntityID = 10, Name = "Cucumber",   Price = 1},
+                new Topping() { EntityID = 11, Name = "Mushroom",   Price = 1},
+                new Topping() { EntityID = 12, Name = "Spinach",    Price = 1}
             }
             );
 

@@ -20,27 +20,37 @@ namespace PizzaWorld.Client
         
         static void PrintAllStores()
         {
+            Console.WriteLine("Select Store:");
             foreach(var store in _sql.ReadStores())
             {
                 Console.WriteLine(store);
             }
         }
+        static void PrintPizzas()
+        {
+            Console.WriteLine("Select Pizza:");
+            Console.WriteLine("Hawaian Pizza");
+            Console.WriteLine("Meat Pizza");
+            Console.WriteLine("Supreme Pizza");
+            Console.WriteLine("Veggie Pizza");
+        }
 
         static void UserView()
         {
-            var user = new User();
+            User user = new User();
 
             PrintAllStores();
 
-            // user.SelectedStore =_sql.SelectStore();
-            // user.SelectedStore.CreateOrder();
-            // user.Orders.Add(user.SelectedStore.Orders.Last());
+            user.SelectedStore =_sql.SelectStore();
+            user.SelectedStore.CreateOrder();
+            PrintPizzas();
+            user.Orders.Add(user.SelectedStore.Orders.Last());
             // while user.SelectPizza()
-            //user.Orders.Last().MakeMeatPizza();
+            user.Orders.Last().MakeMeatPizza("Small");
 
-            //_sql.Update();
+            _sql.Update();
             
-            //System.Console.WriteLine(user);
+            System.Console.WriteLine(user);
 
         }
     }

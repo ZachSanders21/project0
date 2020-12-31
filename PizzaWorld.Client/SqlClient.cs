@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Storing;
 
@@ -27,6 +28,10 @@ namespace PizzaWorld.Client
 
             return s.Orders;
         }
+        // public IEnumerable<APizzaModel> ListPizzas()
+        // {
+        //     return _db.Pizzas;
+        // }
         public void Update()
         {
             _db.SaveChanges();
