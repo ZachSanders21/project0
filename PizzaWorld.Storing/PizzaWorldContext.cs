@@ -9,6 +9,7 @@ namespace PizzaWorld.Storing
     {
         public DbSet<Store> Stores { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Topping> Toppings { get; set; }
         //public DbSet<APizzaModel> Pizzas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -23,7 +24,7 @@ namespace PizzaWorld.Storing
             builder.Entity<APizzaModel>().HasKey(p => p.EntityID);
             builder.Entity<Order>().HasKey(o => o.EntityID);
             builder.Entity<Topping>().HasKey(t => t.EntityID);
-            //builder.Entity<Crust>().HasKey(c => c.EntityID);
+            //builder.Entity<Size>().HasKey(z => z.EntityID);
 
             SeedData(builder);
         }
@@ -51,6 +52,13 @@ namespace PizzaWorld.Storing
                 new Topping() { EntityID = 12, Name = "Spinach",    Price = 1}
             }
             );
+            // builder.Entity<Size>().HasData(new List<Size>
+            // {
+            //     new Size() {EntityID = 1, Name = "Small", Price = 0},
+            //     new Size() {EntityID = 2, Name = "Medium", Price = 2},
+            //     new Size() {EntityID = 3, Name = "Large", Price = 4}
+            // }
+            // );
 
         }
     }

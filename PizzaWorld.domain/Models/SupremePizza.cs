@@ -20,15 +20,16 @@ namespace PizzaWorld.Domain.Models
         }
         protected override void AddToppings()
         {
-            // Toppings = new List<string>
-            // {
-            //     "sausage",
-            //     "onion",
-            //     "mushroom",
-            //     "bacon",
-            //     "chicken",
-            //     "anchovie"
-            // };
+            
+                // Toppings = new List<string>
+                // {
+                //     "sausage",
+                //     "onion",
+                //     "mushroom",
+                //     "bacon",
+                //     "chicken",
+                //     "anchovie"
+                // };
 
         }
         protected override string GetPizzaName()

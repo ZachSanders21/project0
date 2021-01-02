@@ -16,6 +16,10 @@ namespace PizzaWorld.Client
         {
             return _db.Stores;
         }
+        public IEnumerable<Topping> ReadToppings()
+        {
+            return _db.Toppings; 
+        }
 
         public Store ReadOne(string name)
         {

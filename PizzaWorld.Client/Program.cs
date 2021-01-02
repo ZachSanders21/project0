@@ -26,6 +26,13 @@ namespace PizzaWorld.Client
                 Console.WriteLine(store);
             }
         }
+        static void PrintAllTopping()
+        {
+            foreach(var topping in _sql.ReadToppings())
+            {
+                Console.WriteLine(topping);
+            }
+        }
         static void PrintPizzas()
         {
             Console.WriteLine("Select Pizza:");
@@ -44,9 +51,10 @@ namespace PizzaWorld.Client
             user.SelectedStore =_sql.SelectStore();
             user.SelectedStore.CreateOrder();
             PrintPizzas();
+            PrintAllTopping();
             user.Orders.Add(user.SelectedStore.Orders.Last());
-            // while user.SelectPizza()
             user.Orders.Last().MakeMeatPizza("Small");
+            user.Orders.Last().MakeHawaianPizza("Medium");
 
             _sql.Update();
             
