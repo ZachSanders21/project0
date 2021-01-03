@@ -236,7 +236,7 @@ namespace PizzaWorld.Client
         }
         static void MultiplePizzas(User user)
         {
-            Console.WriteLine("Would You like to: \n1. Buy more pizza \n2. Checkout");
+            Console.WriteLine("Would You like to: \n1. Buy more pizza \n2. Checkout \n3. Restart order");
             bool isvalid = false;
             while (isvalid == false)
             {
@@ -255,6 +255,15 @@ namespace PizzaWorld.Client
                             isvalid = true;
                             break;
                         }
+                    case 3:
+                        {
+                            user.SelectedStore.DeleteOrder(user.SelectedStore.Orders.Last());
+                            user.SelectedStore.CreateOrder();
+                            user.Orders.Add(user.SelectedStore.Orders.Last());
+                            SelectPizza(user);
+                            isvalid = true;
+                            break;
+                        }
                     default:
                         {
                             Console.WriteLine("Invalid seelction. Please try again.");
@@ -262,6 +271,14 @@ namespace PizzaWorld.Client
                         }
                 }
             }
+        }
+        static void Checkout()
+        {
+            //view order
+            // y/n proceed
+            // n = restart
+            // y = here is your price 
+            // git
         }
 
         static void UserView(User user)
