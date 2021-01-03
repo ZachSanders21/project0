@@ -20,11 +20,34 @@ namespace PizzaWorld.Client
         {
             return _db.Toppings; 
         }
-
+        public IEnumerable<User> ReadUsers()
+        {
+            return _db.Users;
+        }
+        public void NewUser(User user)
+        {
+            _db.Users.Add(user);
+            _db.SaveChanges();
+        }
+        public User GetUser(string username)
+        {
+            var u = _db.Users.FirstOrDefault(u =>u.Username == username);
+            return u;
+        }
+        public Topping GetTopping(string name)
+        {
+            var t = _db.Toppings.FirstOrDefault(t => t.Name == name);
+            return t;
+        }
         public Store ReadOne(string name)
         {
             var s = _db.Stores.FirstOrDefault(s => s.Name == name);
             return s;
+        }
+        public Size GetSize(string name)
+        {
+            var z = _db.Sizes.FirstOrDefault(z => z.Name == name);
+            return z;
         }
         public IEnumerable<Order> ReadOrders(Store store)
         {

@@ -8,6 +8,7 @@ namespace PizzaWorld.Domain.Models
     public class User : AEntity
     {
         public List<Order> Orders { get; set; }
+        public string Username { get; set; }
 
         public Store SelectedStore { get; set;}
 
@@ -15,7 +16,11 @@ namespace PizzaWorld.Domain.Models
         {
             Orders = new List<Order>();
         }
-
+        public User(string name)
+        {
+            Orders = new List<Order>();
+            Username = name;
+        }
 
         public override string ToString()
         {

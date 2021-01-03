@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaWorld.Storing;
 
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20210102165527_Add Sizes")]
+    partial class AddSizes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,6 +102,26 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasKey("EntityID");
 
                     b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            EntityID = 1L,
+                            Name = "Small",
+                            Price = 0.0
+                        },
+                        new
+                        {
+                            EntityID = 2L,
+                            Name = "Medium",
+                            Price = 2.0
+                        },
+                        new
+                        {
+                            EntityID = 3L,
+                            Name = "Large",
+                            Price = 4.0
+                        });
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Store", b =>
@@ -145,6 +167,80 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasKey("EntityID");
 
                     b.ToTable("Toppings");
+
+                    b.HasData(
+                        new
+                        {
+                            EntityID = 1L,
+                            Name = "Pepperoni",
+                            Price = 2.0
+                        },
+                        new
+                        {
+                            EntityID = 2L,
+                            Name = "Pineapple",
+                            Price = 1.0
+                        },
+                        new
+                        {
+                            EntityID = 3L,
+                            Name = "Cheese",
+                            Price = 3.0
+                        },
+                        new
+                        {
+                            EntityID = 4L,
+                            Name = "Sausage",
+                            Price = 2.0
+                        },
+                        new
+                        {
+                            EntityID = 5L,
+                            Name = "Ham",
+                            Price = 1.0
+                        },
+                        new
+                        {
+                            EntityID = 6L,
+                            Name = "Onion",
+                            Price = 1.0
+                        },
+                        new
+                        {
+                            EntityID = 7L,
+                            Name = "Bacon",
+                            Price = 3.0
+                        },
+                        new
+                        {
+                            EntityID = 8L,
+                            Name = "Chicken",
+                            Price = 3.0
+                        },
+                        new
+                        {
+                            EntityID = 9L,
+                            Name = "Anchovi",
+                            Price = 2.0
+                        },
+                        new
+                        {
+                            EntityID = 10L,
+                            Name = "Cucumber",
+                            Price = 1.0
+                        },
+                        new
+                        {
+                            EntityID = 11L,
+                            Name = "Mushroom",
+                            Price = 1.0
+                        },
+                        new
+                        {
+                            EntityID = 12L,
+                            Name = "Spinach",
+                            Price = 1.0
+                        });
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.User", b =>
@@ -156,9 +252,6 @@ namespace PizzaWorld.Storing.Migrations
 
                     b.Property<long?>("SelectedStoreEntityID")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EntityID");
 

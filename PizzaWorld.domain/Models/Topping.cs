@@ -8,6 +8,15 @@ namespace PizzaWorld.Domain.Models
         public string Name { get; set; }
         public List<APizzaModel> Pizzas { get; set; }
         public double Price { get; set; }
+        public Topping()
+        {
 
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
+ 
     }
 }
