@@ -13,21 +13,25 @@ namespace PizzaWorld.Domain.Models
         {
             Pizzas = new List<APizzaModel>();
         }
-        public void MakeMeatPizza(string size)
+        public void MakeMeatPizza(Size size, string crust)
         {
-            Pizzas.Add(_pizzaFactory.Make<MeatPizza>(size));
+            Pizzas.Add(_pizzaFactory.Make<MeatPizza>(size, crust));
         }
-        public void MakeVeggiePizza(string size)
+        public void MakeVeggiePizza(Size size, string crust)
         {
-            Pizzas.Add(_pizzaFactory.Make<VeggiePizza>(size));
+            Pizzas.Add(_pizzaFactory.Make<VeggiePizza>(size, crust));
         }
-        public void MakeHawaianPizza(string size)
+        public void MakeHawaianPizza(Size size, string crust)
         {
-            Pizzas.Add(_pizzaFactory.Make<HawaianPizza>(size));
+            Pizzas.Add(_pizzaFactory.Make<HawaianPizza>(size, crust));
         }
-        public void MakeSupremePizza(string size)
+        public void MakeSupremePizza(Size size, string crust)
         {
-            Pizzas.Add(_pizzaFactory.Make<SupremePizza>(size));
+            Pizzas.Add(_pizzaFactory.Make<SupremePizza>(size, crust));
+        }
+        public void CalclatePrice()
+        {
+            
         }
     }
 }

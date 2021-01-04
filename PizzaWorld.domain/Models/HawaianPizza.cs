@@ -5,30 +5,17 @@ namespace PizzaWorld.Domain.Models
 {
     public class HawaianPizza : APizzaModel
     {
-        public HawaianPizza(string size) : base(size)
+        public HawaianPizza(Size size, string crust) : base(size, crust)
         {
             
         }
 
-        protected override void AddCrust()
-        {
-            Crust = "crust";
-        }
-
-        protected override void AddSize(string size)
-        {
-            Size = size;
-        }
         protected override void AddToppings()
         {
-
-        //     Toppings = new List<string>
-        //     {
-        //         "pineapple",
-        //         "ham",
-        //         "onion"
-        //     };
-
+            Toppings = new List<Topping>();
+            Toppings.Add(new Topping("Pineapple"));
+            Toppings.Add(new Topping("Ham"));
+            Toppings.Add(new Topping("Onion"));
         }
         protected override string GetPizzaName()
         {

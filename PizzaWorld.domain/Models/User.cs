@@ -30,7 +30,7 @@ namespace PizzaWorld.Domain.Models
             {
                 sb.AppendLine(p.ToString());
             }
-            return $"I have selected this store: {SelectedStore} and ordered these pizzas:\n{sb.ToString()}";
+            return sb.ToString();
         }
     }
 }

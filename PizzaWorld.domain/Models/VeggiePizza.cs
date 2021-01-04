@@ -5,28 +5,19 @@ namespace PizzaWorld.Domain.Models
 {
     public class VeggiePizza : APizzaModel
     {
-        public VeggiePizza(string size) : base(size)
+        public VeggiePizza(Size size, string crust) : base(size, crust)
         {
             
         }
-        protected override void AddCrust()
-        {
-            Crust = "crust";
-        }
 
-        protected override void AddSize(string size)
-        {
-            Size = size;
-        }
         protected override void AddToppings()
         {
-            // Toppings = new List<string>
-            // {
-            //     "cucumber",
-            //     "mushroom",
-            //     "spinach",
-            //     "onion"
-            // };
+            Toppings = new List<Topping>();
+            Toppings.Add(new Topping("Cheese"));
+            Toppings.Add(new Topping("Cucumber"));
+            Toppings.Add(new Topping("Mushroom"));
+            Toppings.Add(new Topping("Onion"));
+            Toppings.Add(new Topping("Spinach"));
 
         }
         protected override string GetPizzaName()

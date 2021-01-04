@@ -7,13 +7,13 @@ namespace PizzaWorld.Domain.Abstracts
     {
         public string Crust { get; set; }
 
-        public string Size { get; set; }
+        public Size Size { get; set; }
         public List<Topping> Toppings { get; set; }
         
 
-        protected APizzaModel(string size)
+        protected APizzaModel(Size size, string crust)
         {
-            AddCrust();
+            AddCrust(crust);
             AddSize(size);
             AddToppings();
         }
@@ -22,9 +22,18 @@ namespace PizzaWorld.Domain.Abstracts
 
         }
 
-        protected virtual void AddCrust() {}
-        protected virtual void AddSize(string size) {}
-        protected virtual void AddToppings() {}
+        protected virtual void AddCrust(string crust) 
+        {
+            Crust = crust;
+        }
+        protected virtual void AddSize(Size size) 
+        {
+            Size = size;
+        }
+        protected virtual void AddToppings()
+        {
+
+        }
         protected virtual string GetPizzaName() 
         {
             return "Name";
