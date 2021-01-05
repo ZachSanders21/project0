@@ -69,16 +69,13 @@ namespace PizzaWorld.Client
             string input = Console.ReadLine();
             return ReadOne(input);
         }
-        public void UserOrderHistroy(User user)
+        public IEnumerable<Order> StoreOrderHistory(Store store)
         {
-            var u = _db.Users
-                       .Include(u => u.Orders)
-                       .ThenInclude(o => o.Pizzas)
-                       .ThenInclude(p => p.Crust)
-                       .FirstOrDefault(u => u.EntityID == user.EntityID);
-            var o = u.Orders.LastOrDefault();
-            var p = o.Pizzas.LastOrDefault().Crust;
-            
+            return _db.Orders.Where(s => s.Store == store).Include(s => s.User);
+        }
+        public IEnumerable<Order> UserOrderHistroy(User user)
+        {
+            return _db.Orders.Where(s => s.User == user).Include(s => s.Store); 
         }
     }
 }

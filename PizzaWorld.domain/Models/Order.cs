@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Factories;
@@ -9,9 +10,19 @@ namespace PizzaWorld.Domain.Models
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
 
         public List<APizzaModel> Pizzas { get; set; }
+        public double TotalPrice { get; set; }
+        public User User { get; set; }
+        public Store Store { get; set; }
+        public DateTime DateModifier { get; set; }
         public Order()
         {
             Pizzas = new List<APizzaModel>();
+            DateModifier = DateTime.Now;
+        }
+        public Order(List<APizzaModel> pizzas)
+        {
+            Pizzas = pizzas;
+            DateModifier = DateTime.Now;
         }
         public void MakeMeatPizza(Size size, string crust)
         {
@@ -28,10 +39,6 @@ namespace PizzaWorld.Domain.Models
         public void MakeSupremePizza(Size size, string crust)
         {
             Pizzas.Add(_pizzaFactory.Make<SupremePizza>(size, crust));
-        }
-        public void CalclatePrice()
-        {
-            
         }
     }
 }

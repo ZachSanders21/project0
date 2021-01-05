@@ -12,10 +12,11 @@ namespace PizzaWorld.Storing
         public DbSet<Topping> Toppings { get; set; }
         //public DbSet<APizzaModel> Pizzas { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer("Server=pizzaworldsanders.database.windows.net,1433;Initial Catalog=PizzaWorldDB;User ID=sqladmin;Password={};");
+            builder.UseSqlServer("Server=pizzaworldsanders.database.windows.net,1433;Initial Catalog=PizzaWorldDB;User ID=sqladmin;Password=Password12345;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -37,29 +38,6 @@ namespace PizzaWorld.Storing
                 new Store() { EntityID = 2, Name = "two"}
             }
             );
-            // builder.Entity<Topping>().HasData(new List<Topping>
-            // {
-            //     new Topping() { EntityID = 1,  Name = "Pepperoni",  Price = 2},
-            //     new Topping() { EntityID = 2,  Name = "Pineapple",  Price = 1},
-            //     new Topping() { EntityID = 3,  Name = "Cheese",     Price = 3},
-            //     new Topping() { EntityID = 4,  Name = "Sausage",    Price = 2},
-            //     new Topping() { EntityID = 5,  Name = "Ham",        Price = 1},
-            //     new Topping() { EntityID = 6,  Name = "Onion",      Price = 1},
-            //     new Topping() { EntityID = 7,  Name = "Bacon",      Price = 3},
-            //     new Topping() { EntityID = 8,  Name = "Chicken",    Price = 3},
-            //     new Topping() { EntityID = 9,  Name = "Anchovi",    Price = 2},
-            //     new Topping() { EntityID = 10, Name = "Cucumber",   Price = 1},
-            //     new Topping() { EntityID = 11, Name = "Mushroom",   Price = 1},
-            //     new Topping() { EntityID = 12, Name = "Spinach",    Price = 1}
-            // }
-            // );
-            // builder.Entity<Size>().HasData(new List<Size>
-            // {
-            //     new Size() {EntityID = 1, Name = "Small", Price = 0},
-            //     new Size() {EntityID = 2, Name = "Medium", Price = 2},
-            //     new Size() {EntityID = 3, Name = "Large", Price = 4}
-            // }
-            // );
 
         }
     }

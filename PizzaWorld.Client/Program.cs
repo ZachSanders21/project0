@@ -21,7 +21,7 @@ namespace PizzaWorld.Client
         }
         static void UserStore()
         {
-            Console.WriteLine("Are you a 1. User\n2. Store");
+            Console.WriteLine("Are you a \n1. User\n2. Store");
             bool isvalid = false;
             while (isvalid == false)
             {
@@ -46,8 +46,81 @@ namespace PizzaWorld.Client
         static void StoreLogIn()
         {
             PrintAllStores();
-            //user.SelectedStore =_sql.SelectStore();
+            var SelectedStore =_sql.SelectStore();
+            StoreHistory(SelectedStore);
+        }
+        static void StoreHistory(Store store)
+        {
+            Console.WriteLine("Would you like to\n1. View sales\n2. View order history");
+            bool isvalid = false;
+            while (isvalid == false)
+            {
+                int.TryParse(Console.ReadLine(), out int input);
+                switch (input)
+                {
+                    case 1:
+                        ViewSales(store);
+                        isvalid = true;
+                        break;
+                    case 2:
+                        StoreOrderHistory(store);
+                        isvalid = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid selection. Please try again.");
+                        StoreHistory(store);
+                        break;
+                }
 
+            }
+        }
+        static void ViewSales(Store store)
+        {
+            Console.WriteLine("Would you like to view sales from this\n1. Week \n2. Month");
+            bool isvalid = false;
+            while (isvalid == false)
+            {
+                int.TryParse(Console.ReadLine(), out int input);
+                switch (input)
+                {
+                    case 1:
+                        IEnumerable<Order> orderhist = _sql.StoreOrderHistory(store);
+                        double totalprice = 0;
+                        double totalorder = 0;
+                        foreach (Order order in orderhist)
+                        {
+                            if (order.DateModifier > DateTime.Now.AddDays(-7))
+                            {
+                                totalprice += order.TotalPrice; 
+                                totalorder += 1;
+                            }
+                        }
+                        Console.WriteLine($"Total number of orders this week: {totalorder} \nTotal revenue this week: ${totalprice}");
+                        isvalid = true;
+                        break;
+                    case 2:
+                        IEnumerable<Order> orderhistmonth = _sql.StoreOrderHistory(store);
+                        double totalpricemonth = 0;
+                        foreach (Order order in orderhistmonth)
+                        {
+                            totalpricemonth += order.TotalPrice;
+                        }
+                        Console.WriteLine($"Total revenue this month: ${totalpricemonth}");
+                        isvalid = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid selection. Please try again.");
+                        break;
+                }
+            }
+        }
+        static void StoreOrderHistory(Store store)
+        {
+            IEnumerable<Order> orderhist = _sql.StoreOrderHistory(store);
+            foreach (Order order in orderhist)
+                {
+                    Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: {order.TotalPrice}\n");
+                }
         }
         static void LogIn()
         {
@@ -82,12 +155,41 @@ namespace PizzaWorld.Client
             User user = _sql.GetUser(input);
             if (user != null)
             {
-                UserView(user);
+                Console.WriteLine("Welcome back!");
+                OrderOrHistory(user);
             }
             else
             {
                 Console.WriteLine("Invalid User. Please Try again");
                 ReturningUser();
+            }
+        }
+        static void OrderOrHistory(User user)
+        {
+            Console.WriteLine("Would you like to\n1. Order\n2. View order history");
+            bool isvalid = false;
+            while (isvalid == false)
+            {
+                int.TryParse(Console.ReadLine(), out int input);
+                switch (input)
+                {
+                    case 1:
+                        UserView(user);
+                        isvalid = true;
+                        break;
+                    case 2:
+                        IEnumerable<Order> orderhist = _sql.UserOrderHistroy(user);
+                        foreach (Order order in orderhist)
+                        {
+                            Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: {order.TotalPrice}\n");
+                        }
+                        isvalid = true;
+                        break;
+                    default:
+                        Console.WriteLine("Input invalid. Please try again.");
+                        OrderOrHistory(user);
+                        break;
+                }
             }
         }
         static void PrintAllStores()
@@ -185,16 +287,17 @@ namespace PizzaWorld.Client
             if (input == "y")
             {
                 var test = user.Orders.Last().Pizzas;
-                double totalsize = 0;
+                double totalprice = 0;
                 foreach (APizzaModel Pizza in test)
                 {
-                    totalsize += Pizza.Size.Price;
+                    totalprice += Pizza.Size.Price;
                     foreach (Topping topping in Pizza.Toppings)
                     {
-                        totalsize += topping.Price;
+                        totalprice += topping.Price;
                     }
                 }
-                Console.WriteLine($"This is your price: {totalsize}");
+                user.Orders.Last().TotalPrice = totalprice;
+                Console.WriteLine($"This is your price: {totalprice}");
             }
             else if (input == "n")
             {
@@ -276,7 +379,6 @@ namespace PizzaWorld.Client
 
         static void UserView(User user)
         {
-
             PrintAllStores();
 
             user.SelectedStore =_sql.SelectStore();
