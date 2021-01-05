@@ -1,3 +1,4 @@
+using System.Linq;
 using PizzaWorld.Domain.Models;
 using Xunit;
 
@@ -18,6 +19,50 @@ namespace PizzaWorld.Testing
             // assert
             Assert.IsType<Order>(actual);
             Assert.NotNull(actual);
+        }
+        [Fact]
+        private void Test_MakeMeatPizza()
+        {
+            Order test = new Order();
+            Size size = new Size("Huge");
+            string crust = "pizza";
+            test.MakeMeatPizza(size, crust);
+
+            Assert.Equal(size, test.Pizzas.First().Size);
+            Assert.Equal(crust, test.Pizzas.First().Crust);
+        }
+        [Fact]
+        private void Test_MakeVeggiePizza()
+        {
+            Order test = new Order();
+            Size size = new Size("Huge");
+            string crust = "pizza";
+            test.MakeVeggiePizza(size, crust);
+
+            Assert.Equal(size, test.Pizzas.First().Size);
+            Assert.Equal(crust, test.Pizzas.First().Crust);
+        }
+        [Fact]
+        private void Test_MakeHawaianPizza()
+        {
+            Order test = new Order();
+            Size size = new Size("Huge");
+            string crust = "pizza";
+            test.MakeHawaianPizza(size, crust);
+
+            Assert.Equal(size, test.Pizzas.First().Size);
+            Assert.Equal(crust, test.Pizzas.First().Crust);
+        }
+        [Fact]
+        private void Test_MakeSupremePizza()
+        {
+            Order test = new Order();
+            Size size = new Size("Huge");
+            string crust = "pizza";
+            test.MakeSupremePizza(size, crust);
+
+            Assert.Equal(size, test.Pizzas.First().Size);
+            Assert.Equal(crust, test.Pizzas.First().Crust);
         }
     }
 }

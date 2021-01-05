@@ -101,11 +101,16 @@ namespace PizzaWorld.Client
                     case 2:
                         IEnumerable<Order> orderhistmonth = _sql.StoreOrderHistory(store);
                         double totalpricemonth = 0;
+                        double totalordermonth = 0;
                         foreach (Order order in orderhistmonth)
                         {
-                            totalpricemonth += order.TotalPrice;
+                            if (order.DateModifier > DateTime.Now.AddMonths(-1))
+                            {
+                                totalpricemonth += order.TotalPrice;
+                                totalordermonth += 1;
+                            }
                         }
-                        Console.WriteLine($"Total revenue this month: ${totalpricemonth}");
+                        Console.WriteLine($"Total nubmer of orders this month: {totalordermonth} \nTotal revenue this month: ${totalpricemonth}");
                         isvalid = true;
                         break;
                     default:

@@ -19,11 +19,6 @@ namespace PizzaWorld.Domain.Models
             Pizzas = new List<APizzaModel>();
             DateModifier = DateTime.Now;
         }
-        public Order(List<APizzaModel> pizzas)
-        {
-            Pizzas = pizzas;
-            DateModifier = DateTime.Now;
-        }
         public void MakeMeatPizza(Size size, string crust)
         {
             Pizzas.Add(_pizzaFactory.Make<MeatPizza>(size, crust));
