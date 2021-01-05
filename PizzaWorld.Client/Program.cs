@@ -287,7 +287,7 @@ namespace PizzaWorld.Client
         }
         static void Checkout(User user)
         {
-            Console.WriteLine($"This is your order: {user}\nWould you like to complete checkout? (Y/n)");
+            Console.WriteLine($"This is your order: \n{user}\nWould you like to complete checkout? (Y/n)");
             var input = Console.ReadLine().ToLower();
             if (input == "y")
             {
@@ -302,7 +302,7 @@ namespace PizzaWorld.Client
                     }
                 }
                 user.Orders.Last().TotalPrice = totalprice;
-                Console.WriteLine($"This is your price: {totalprice}");
+                Console.WriteLine($"This is your price: ${totalprice}");
             }
             else if (input == "n")
             {
