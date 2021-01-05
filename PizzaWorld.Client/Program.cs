@@ -186,7 +186,7 @@ namespace PizzaWorld.Client
                         IEnumerable<Order> orderhist = _sql.UserOrderHistroy(user);
                         foreach (Order order in orderhist)
                         {
-                            Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: {order.TotalPrice}\n");
+                            Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: ${order.TotalPrice}\n");
                         }
                         isvalid = true;
                         break;
