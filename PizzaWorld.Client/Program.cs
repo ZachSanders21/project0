@@ -124,7 +124,7 @@ namespace PizzaWorld.Client
             IEnumerable<Order> orderhist = _sql.StoreOrderHistory(store);
             foreach (Order order in orderhist)
                 {
-                    Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: {order.TotalPrice}\n");
+                    Console.WriteLine($"Store: {order.Store.Name}\nUser: {order.User.Username} \nPrice: {order.TotalPrice}\nOrderTime: {order.DateModifier}\n");
                 }
         }
         static void LogIn()
